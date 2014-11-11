@@ -42,6 +42,7 @@ define(function(require, exports, module) {
       // Reset the state and render.
       this.reset();
       this.bikes.fetch();
+
     },
 
     org: function(name) {
@@ -94,9 +95,9 @@ define(function(require, exports, module) {
 
     reset: function() {
       // Reset collections to initial state.
-      // if (this.users.length) {
-      //   this.users.reset();
-      // }
+      if (this.bikes.length) {
+        this.bikes.reset();
+      }
 
       // Reset active model.
       app.active = false;

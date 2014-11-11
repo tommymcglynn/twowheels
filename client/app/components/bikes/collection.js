@@ -7,10 +7,15 @@ define(function(require, exports, module) {
 
   var Collection = Backbone.Collection.extend({
 
-    model: bikeModel,
+    // model: bikeModel,
 
     url: function() {
       return app.api + "bikes";
+    },
+    parse: function(data) {
+      console.log('data...');
+      console.log(data);
+      return data;
     }
   });
 

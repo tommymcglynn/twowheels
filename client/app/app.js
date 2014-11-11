@@ -6,6 +6,7 @@ define(function(require, exports, module) {
   var Backbone = require("backbone");
   var Layout = require("layoutmanager");
 
+
   // Alias the module for easier identification.
   var app = module.exports;
 
@@ -38,13 +39,13 @@ define(function(require, exports, module) {
       this.isRequest = false;
     },
 
-    parse: function(obj) {
-      // Safety check ensuring only valid data is used.
-      if (obj.data.message !== "Not Found") {
-        return obj.data;
-      }
+    // parse: function(obj) {
+    //   // Safety check ensuring only valid data is used.
+    //   if (obj.data.message !== "Not Found") {
+    //     return obj.data;
+    //   }
 
-      return this.models;
-    }
+    //   return this.models;
+    // }
   });
 });

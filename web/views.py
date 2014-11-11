@@ -361,7 +361,9 @@ def bikes(request):
     ]
 }
     """
-    return HttpResponse(mock, content_type="application/json")
+    response = HttpResponse(mock, content_type="application/json")
+    response['Access-Control-Allow-Origin'] = '*'
+    return response
 
 @csrf_exempt
 def bike_detail(request, bike_id):

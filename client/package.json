@@ -17,7 +17,8 @@
     "karma-qunit": "~0.1.0",
     "karma-phantomjs-launcher": "~0.1.0",
     "karma-coverage": "~0.1.0",
-    "connect-modrewrite": "~0.7.9"
+    "connect-modrewrite": "~0.7.9",
+    "grunt-contrib-watch": "~0.6.1"
   },
   "peerDependencies": {
     "generator-bbb": "*",

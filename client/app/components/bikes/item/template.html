@@ -1,3 +1,11 @@
-<a href="#">
-    <%= model.get("name") %>
+<a href="#/bike/<%- bike.id %>">
+<img style="width:100%;" src="<%- bike.image_url %>" />
+    <h4><%= bike.name %></h4>
+    <% if (bike.parts.length > 0) { %>
+        <ul>
+        <% bike.parts.forEach(function(part){ %>
+            <li><a href="#/parts/<%- part.id %>"><%- part.name %></li>
+        <% }); %>
+        </ul>
+    <% } %>
 </a>

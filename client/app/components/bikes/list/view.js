@@ -12,11 +12,14 @@ define(function(require, exports, module) {
     },
 
     beforeRender: function() {
+      var self = this;
       this.collection.each(function(bike) {
-        this.insertView(".bikes-list", new Item({
-          model: bike
-        }));
-      }, this);
+        bike.get("bikes").forEach(function(b){
+          self.insertView(".bikes-list", new Item({
+            bike: b
+          }));
+        });
+      });
     },
 
     afterRender: function() {

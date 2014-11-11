@@ -8,6 +8,22 @@ module.exports = function(grunt) {
     // Run your source code through JSHint's defaults.
     jshint: ["app/**/*.js"],
 
+    watch: {
+      scripts: {
+        files: ['app/**/*.js','app/**/*.html','app/**/*.*'],
+        tasks: ["clean",
+    "jshint",
+    "processhtml",
+    "copy",
+    "requirejs",
+    "styles",
+    "cssmin",],
+        options: {
+          spawn: false,
+        },
+      },
+    },
+
     // This task uses James Burke's excellent r.js AMD builder to take all
     // modules and concatenate them into a single file.
     requirejs: {
@@ -198,11 +214,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-contrib-compress");
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Third-party tasks.
   grunt.loadNpmTasks("grunt-karma");
   grunt.loadNpmTasks("grunt-karma-coveralls");
   grunt.loadNpmTasks("grunt-processhtml");
+
 
   // Grunt BBB tasks.
   grunt.loadNpmTasks("grunt-bbb-server");
