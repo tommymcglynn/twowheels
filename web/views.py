@@ -1,8 +1,10 @@
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
     return HttpResponse("Hello, world. You're at the Two Wheels index.")
 
+@csrf_exempt
 def bikes(request):
     mock = """{
     "bikes": [
@@ -361,6 +363,7 @@ def bikes(request):
     """
     return HttpResponse(mock, content_type="application/json")
 
+@csrf_exempt
 def bike_detail(request, bike_id):
     mock = """{
     "id": 1,
