@@ -1,8 +1,13 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
+from rest_framework import routers
 from web import views
+from web import api
+
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'bikes', api.BikeViewSet)
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
-    url(r'^bikes$', views.bikes, name='bikes'),
-    url(r'^bikes/(?P<bike_id>\d+)', views.bike_detail, name='bike_detail'),
+    url(r'^api/', include(router.urls)),
 )
