@@ -33,9 +33,7 @@ define(function(require, exports, module) {
 
     routes: {
       "": "index",
-      "org/:name": "org",
-      "org/:org/user/:name": "user",
-      "org/:org/user/:user/repo/:name": "repo"
+      "bikes/:id": "getBikeById",
     },
 
     index: function() {
@@ -45,47 +43,8 @@ define(function(require, exports, module) {
 
     },
 
-    org: function(name) {
-      // Reset the state and render.
-      this.reset();
-
-      // Set the organization.
-      this.users.org = name;
-
-      // Fetch the data.
-      this.users.fetch();
-    },
-
-    user: function(org, name) {
-      // Reset the state and render.
-      this.reset();
-
-      // Set the organization.
-      this.users.org = org;
-      // Set the user name.
-      this.repos.user = name;
-
-      // Fetch the data.
-      this.users.fetch();
-      this.repos.fetch();
-    },
-
-    repo: function(org, user, name) {
-      // Reset the state and render.
-      this.reset();
-
-      // Set the organization.
-      this.users.org = org;
-      // Set the user name.
-      this.repos.user = user;
-      // Set the repo name.
-      this.commits.user = user;
-      this.commits.repo = name;
-
-      // Fetch the data.
-      this.users.fetch();
-      this.repos.fetch();
-      this.commits.fetch();
+    getBikeById: function(id) {
+      console.log('get bike by id: ' + id);
     },
 
     // Shortcut for building a url.
