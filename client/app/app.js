@@ -14,7 +14,7 @@ define(function(require, exports, module) {
   app.root = "/";
 
   // API endpoint.
-  app.api = "http://localhost:8000/tw/";
+  app.api = "http://localhost:8111/tw/api/";
 
   // Useful defaults for GitHub Viewer.
   _.extend(Backbone.Collection.prototype, {
