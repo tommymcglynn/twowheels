@@ -105,6 +105,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -137,6 +138,7 @@ INSTALLED_APPS = (
     'compressor',
     'debug_toolbar',
     'rest_framework',
+    'corsheaders',
 
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
