@@ -4,6 +4,9 @@ from rest_framework.response import Response
 from web.models import Bike, BikeStyle, BikeModel, BikePart
 
 
+PAGINATE_BY_PARAM = 'page_size'
+
+
 class BikeStyleSerializer(serializers.ModelSerializer):
     class Meta:
         model = BikeStyle
@@ -36,5 +39,29 @@ class BikeViewSet(viewsets.ModelViewSet):
     queryset = Bike.objects.all()
     serializer_class = BikeSerializer
     paginate_by = 20
-    paginate_by_param = 'page_size'
+    paginate_by_param = PAGINATE_BY_PARAM
     max_paginate_by = 1000
+
+
+class BikeStyleViewSet(viewsets.ModelViewSet):
+    queryset = BikeStyle.objects.all()
+    serializer_class = BikeStyleSerializer
+    paginate_by = 100
+    paginate_by_param = PAGINATE_BY_PARAM
+    max_paginate_by = 10000
+
+
+class BikeModelViewSet(viewsets.ModelViewSet):
+    queryset = BikeModel.objects.all()
+    serializer_class = BikeModelSerializer
+    paginate_by = 100
+    paginate_by_param = PAGINATE_BY_PARAM
+    max_paginate_by = 10000
+
+
+class BikePartViewSet(viewsets.ModelViewSet):
+    queryset = BikePart.objects.all()
+    serializer_class = BikePartSerializer
+    paginate_by = 100
+    paginate_by_param = PAGINATE_BY_PARAM
+    max_paginate_by = 10000
