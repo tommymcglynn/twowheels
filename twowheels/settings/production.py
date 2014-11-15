@@ -3,6 +3,8 @@ import os
 
 DEBUG = False
 
+CORS_ORIGIN_REGEX_WHITELIST = ('^(https?://)?twowheels-env-([a-z_0-9]*).elasticbeanstalk.com$', )
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
