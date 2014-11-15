@@ -5,3 +5,4 @@
 /.vagrant
 /settings/local.py
 /static
+.elasticbeanstalk/
