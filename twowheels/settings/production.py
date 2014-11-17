@@ -3,6 +3,8 @@ import os
 
 DEBUG = False
 
+PREPEND_WWW=True
+
 CORS_ORIGIN_REGEX_WHITELIST = ('^(https?://)?twowheels-env-([a-z_0-9]*)\.elasticbeanstalk\.com$',
                                '^(https?://)?(www\.)?twowheel\.in')
 
