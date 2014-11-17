@@ -3,7 +3,8 @@ import os
 
 DEBUG = False
 
-CORS_ORIGIN_REGEX_WHITELIST = ('^(https?://)?twowheels-env-([a-z_0-9]*).elasticbeanstalk.com$', )
+CORS_ORIGIN_REGEX_WHITELIST = ('^(https?://)?twowheels-env-([a-z_0-9]*)\.elasticbeanstalk\.com$',
+                               '^(https?://)?(www\.)?twowheel\.in')
 
 DATABASES = {
     'default': {
