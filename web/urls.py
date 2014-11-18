@@ -15,5 +15,5 @@ router.register(r'parts', api.BikePartViewSet)
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
-    url(r'^api/', include(router.urls)),
+    url(r'^api/', include(router.urls), name='api-root'),
 )
