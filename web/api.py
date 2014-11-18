@@ -7,22 +7,22 @@ from web.models import Bike, BikeStyle, BikeModel, BikePart
 PAGINATE_BY_PARAM = 'page_size'
 
 
-class BikeStyleSerializer(serializers.ModelSerializer):
+class BikeStyleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = BikeStyle
-        fields = ('id', 'name')
+        fields = ('url', 'id', 'name')
 
 
-class BikeModelSerializer(serializers.ModelSerializer):
+class BikeModelSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = BikeModel
-        fields = ('id', 'type', 'name')
+        fields = ('url', 'id', 'type', 'name')
 
 
-class BikePartSerializer(serializers.ModelSerializer):
+class BikePartSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = BikePart
-        fields = ('id', 'type', 'name')
+        fields = ('url', 'id', 'type', 'name')
 
 
 class BikeSerializer(serializers.HyperlinkedModelSerializer):
@@ -32,7 +32,7 @@ class BikeSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Bike
-        fields = ('url', 'id', 'name', 'image_url', 'styles', 'models', 'parts')
+        fields = ('url', 'created', 'id', 'name', 'image_url', 'source_url', 'styles', 'models', 'parts')
 
 
 class BikeViewSet(viewsets.ModelViewSet):
