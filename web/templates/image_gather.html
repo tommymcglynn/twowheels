@@ -39,6 +39,12 @@
 {% if part %}
 <h2>Part: {{ part.name }}</h2>
 {% endif %}
+{% if make %}
+<h2>Make: {{ make.name }}</h2>
+{% endif %}
+{% if family %}
+<h2>Family: {{ family.name }}</h2>
+{% endif %}
 {% if model %}
 <h2>Model: {{ model.name }}</h2>
 {% endif %}
@@ -63,21 +69,35 @@
 </ul>
 
 <div id="footer">
-    <a href="{% url 'gather-images' partId=partId modelId=modelId styleId=styleId start=nextStart %}">More</a>
+    <a href="{% url 'gather-images' partId=partId makeId=makeId familyId=familyId modelId=modelId styleId=styleId start=nextStart %}">More</a>
 </div>
 
 {% elif styles %}
 <h2>Styles</h2>
 <ul id="style-list" class="type-list">
     {% for style in styles %}
-    <li><a href="{% url 'gather-images' partId=partId modelId=modelId styleId=style.id %}">{{ style.name }}</a></li>
+    <li><a href="{% url 'gather-images' partId=partId makeId=makeId familyId=familyId modelId=modelId styleId=style.id %}">{{ style.name }}</a></li>
     {% endfor %}
 </ul>
 {% elif models %}
 <h2>Models</h2>
 <ul id="model-list" class="type-list">
     {% for model in models %}
-    <li><a href="{% url 'gather-images' partId=partId modelId=model.id %}">{{ model.name }}</a></li>
+    <li><a href="{% url 'gather-images' partId=partId makeId=makeId familyId=familyId modelId=model.id %}">{{ model.name }}</a></li>
+    {% endfor %}
+</ul>
+{% elif families %}
+<h2>Families</h2>
+<ul id="family-list" class="type-list">
+    {% for family in families %}
+    <li><a href="{% url 'gather-images' partId=partId makeId=makeId familyId=family.id %}">{{ family.name }}</a></li>
+    {% endfor %}
+</ul>
+{% elif makes %}
+<h2>Makes</h2>
+<ul id="make-list" class="type-list">
+    {% for make in makes %}
+    <li><a href="{% url 'gather-images' partId=partId makeId=make.id %}">{{ make.name }}</a></li>
     {% endfor %}
 </ul>
 {% elif parts %}

@@ -10,23 +10,39 @@ class BikeStyle(models.Model):
         return self.name
 
 
-class BikeModel(models.Model):
-    MAKE = 1
-    FAMILY = 2
-    MODEL = 3
-    TYPE_CHOICES = (
-        (MAKE, 'Make'),
-        (FAMILY, 'Family'),
-        (MODEL, 'Model'),
-    )
-
+class BikeMake(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    type = models.PositiveSmallIntegerField(choices=TYPE_CHOICES)
     name = models.CharField(max_length=64, unique=True)
 
     def __str__(self):
         return self.name
+
+
+class BikeFamily(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    name = models.CharField(max_length=64)
+    make = models.ForeignKey(BikeMake)
+
+    class Meta:
+        unique_together = ("make", "name")
+
+    def __str__(self):
+        return '%s %s' % (self.make, self.name)
+
+
+class BikeModel(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    name = models.CharField(max_length=64)
+    family = models.ForeignKey(BikeFamily)
+
+    class Meta:
+        unique_together = ("family", "name")
+
+    def __str__(self):
+        return '%s %s' % (self.family, self.name)
 
 
 class BikePart(models.Model):
@@ -62,9 +78,9 @@ class Bike(models.Model):
     name = models.CharField(max_length=128)
     image_url = models.URLField(max_length=256)
     source_url = models.URLField(max_length=256, null=True)
+    model = models.ForeignKey(BikeModel)
     parts = models.ManyToManyField(BikePart, related_name='parts', blank=True)
     styles = models.ManyToManyField(BikeStyle, related_name='styles')
-    models = models.ManyToManyField(BikeModel, related_name='models')
 
     def __str__(self):
         return self.name

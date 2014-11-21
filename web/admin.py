@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from web.models import Bike, BikeStyle, BikeModel, BikePart
+from web.models import Bike, BikeStyle, BikeMake, BikeFamily, BikeModel, BikePart
 
 
 class BikeAdmin(admin.ModelAdmin):
@@ -15,5 +15,7 @@ class BikeAdmin(admin.ModelAdmin):
 
 admin.site.register(Bike, BikeAdmin)
 admin.site.register(BikeStyle)
+admin.site.register(BikeMake)
+admin.site.register(BikeFamily)
 admin.site.register(BikeModel)
 admin.site.register(BikePart)
