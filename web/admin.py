@@ -4,13 +4,13 @@ from web.models import Bike, BikeStyle, BikeMake, BikeFamily, BikeModel, BikePar
 
 
 class BikeAdmin(admin.ModelAdmin):
-    list_display = ('image_tag', 'name', 'created', 'modified')
+    list_display = ('image_tag', 'name', 'model', 'created', 'modified')
     readonly_fields = ('image_tag', 'created', 'modified')
     fieldsets = [
         (None,                  {'fields': ['name']}),
         ('Date',                {'fields': ['created', 'modified']}),
         ('Image',               {'fields': ['image_tag', 'image_url', 'source_url']}),
-        ('Indices',             {'fields': ['models', 'styles', 'parts']}),
+        ('Indices',             {'fields': ['model', 'styles', 'parts']}),
     ]
 
 admin.site.register(Bike, BikeAdmin)

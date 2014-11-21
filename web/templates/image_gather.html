@@ -112,27 +112,35 @@
 <script src="{{ STATIC_URL }}js/jquery-1.9.1.js"></script>
 <script src="{{ STATIC_URL }}js/jquery.cookie.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(".image-save-btn").click(function(event) {
-            //Do stuff when clicked
-            event.preventDefault();
-            var csrftoken = $.cookie("csrftoken");
-            var imageData = $(this).attr('data-image-data');
-            $.ajax({
-                type: "POST",
-                url: "{{ saveUrl }}",
-                headers: {
-                    'X-CSRFToken': csrftoken
-                },
-                data: imageData,
-                success: function(data, textStatus, jqXHR) {
-                    alert( "success" );
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert( "error" );
-                }
-            });
+    function onSaveClick(event) {
+        //Do stuff when clicked
+        event.preventDefault();
+        anchor = $(this);
+        anchor.click(function() {event.preventDefault();})
+        anchor.text('Saving')
+        var csrftoken = $.cookie("csrftoken");
+        var imageData = $(this).attr('data-image-data');
+        $.ajax({
+            type: "POST",
+            url: "{{ saveUrl }}",
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+            data: imageData,
+            success: function(data, textStatus, jqXHR) {
+                anchor.text('Saved')
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                anchor.text('Try Again')
+                anchor.click(onSaveClick);
+            },
+            complete: function(jqXHR, textStatus) {
+
+            }
         });
+    }
+    $(document).ready(function() {
+        $(".image-save-btn").click(onSaveClick);
     });
 </script>
 </body>

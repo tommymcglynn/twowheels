@@ -76,7 +76,7 @@ class Bike(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=128)
-    image_url = models.URLField(max_length=256)
+    image_url = models.URLField(max_length=256, unique=True)
     source_url = models.URLField(max_length=256, null=True)
     model = models.ForeignKey(BikeModel)
     parts = models.ManyToManyField(BikePart, related_name='parts', blank=True)
