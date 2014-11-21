@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
+from django.http import HttpResponse
 from web.models import BikeStyle, BikeModel, BikePart
 
 def index(request):
@@ -11,6 +12,11 @@ def gather_images(request, partId=None, modelId=None, styleId=None, start='1'):
     import urllib2
     import json
 
+    if request.method == 'POST':
+        # handle new image data
+        imageData = json.load(request)
+        return HttpResponse(imageData)
+
     start = int(start)
     count = 8
     dataInfo = None
@@ -21,6 +27,7 @@ def gather_images(request, partId=None, modelId=None, styleId=None, start='1'):
     part = None
     model = None
     style = None
+    saveUrl = ''
     if partId:
         part = BikePart.objects.get(id=partId)
     if modelId:
@@ -28,6 +35,7 @@ def gather_images(request, partId=None, modelId=None, styleId=None, start='1'):
     if styleId:
         style = BikeStyle.objects.get(id=styleId)
     if partId and modelId and styleId:
+        saveUrl = reverse('gather-images', kwargs={'partId': partId, 'modelId': modelId, 'styleId': styleId})
         searchTerm = '%s+%s+%s' % (part.name, model.name, style.name)
         searchTerm = searchTerm.replace(' ','+').replace('&', '+')
         # Notice that the start changes for each iteration in order to request a new set of images for each loop
@@ -39,6 +47,8 @@ def gather_images(request, partId=None, modelId=None, styleId=None, start='1'):
         results = json.load(response)
         data = results['responseData']
         dataInfo = data['results']
+        for imageData in dataInfo:
+            imageData['json'] = json.dumps(imageData)
     elif partId and modelId:
         # load styles
         styles = BikeStyle.objects.all()
@@ -53,5 +63,6 @@ def gather_images(request, partId=None, modelId=None, styleId=None, start='1'):
     context = {'results': dataInfo, 'searchTerm': searchTerm, 'nextStart': start+count,
                'partId': partId, 'modelId': modelId, 'styleId': styleId,
                'part': part, 'model': model, 'style': style,
-               'styles': styles, 'models': models, 'parts': parts}
+               'styles': styles, 'models': models, 'parts': parts,
+               'saveUrl': saveUrl}
     return render(request, 'image_gather.html', context)

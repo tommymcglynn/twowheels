@@ -56,7 +56,8 @@
             <img src="{{ image_data.unescapedUrl }}" class="image"/>
             <span class="image-title">{{ image_data.titleNoFormatting }}</span><br />
             <span class="image-content">{{ image_data.contentNoFormatting }}</span><br />
-            <span class="image-dimensions">{{ image_data.width }}x{{ image_data.height }}</span><br />
+            <span class="image-dimensions">{{ image_data.width }} x {{ image_data.height }}</span><br />
+            <a href="#" class="image-save-btn" data-image-data="{{ image_data.json }}">Save</a>
         </li>
     {% endfor %}
 </ul>
@@ -89,5 +90,30 @@
 {% endif %}
 
 <script src="{{ STATIC_URL }}js/jquery-1.9.1.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.cookie.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".image-save-btn").click(function(event) {
+            //Do stuff when clicked
+            event.preventDefault();
+            var csrftoken = $.cookie("csrftoken");
+            var imageData = $(this).attr('data-image-data');
+            $.ajax({
+                type: "POST",
+                url: "{{ saveUrl }}",
+                headers: {
+                    'X-CSRFToken': csrftoken
+                },
+                data: imageData,
+                success: function(data, textStatus, jqXHR) {
+                    alert( "success" );
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert( "error" );
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
