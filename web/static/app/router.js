@@ -38,20 +38,8 @@ define(function(require, exports, module) {
 
     index: function() {
       // Reset the state and render.
-      // this.reset();
-      console.log('index...');
-      this.bikes.fetch({
-         reset: true,
-          success: function (collection, response, options) {
-              // you can pass additional options to the event you trigger here as well
-              console.log('successOnFetch');
-          },
-          error: function (collection, response, options) {
-              // you can pass additional options to the event you trigger here as well
-              console.log('errorOnFetch');
-          }
-      });
-
+      this.reset();
+      this.bikes.fetch({"reset": true});
     },
 
     getBikeById: function(id) {

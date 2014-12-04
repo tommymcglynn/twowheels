@@ -9,7 +9,7 @@ define(function(require, exports, module) {
     tagName: 'div class="col-xs-3 bike-item"',
 
     serialize: function() {
-      return { bike: this.bike };
+      return { bike: this.bikeModel };
     },
 
     events: {
@@ -17,6 +17,9 @@ define(function(require, exports, module) {
     },
 
     initialize: function() {
+      console.log('Item: this.bikeModel');
+      console.log(this.bikeModel);
+      this.render();
       // this.listenTo(this.model, "change", this.render);
     }
   });

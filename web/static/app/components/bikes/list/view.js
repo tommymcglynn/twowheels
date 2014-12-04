@@ -13,13 +13,10 @@ define(function(require, exports, module) {
 
     beforeRender: function() {
       var self = this;
-
       this.collection.each(function(bike) {
-        bike.get("bikes").forEach(function(b){
-          self.insertView(".bikes-list", new Item({
-            bike: b
-          }));
-        });
+        self.insertView(".bikes-list", new Item({
+          bikeModel: bike
+        }));
       });
     },
 
@@ -28,10 +25,8 @@ define(function(require, exports, module) {
     },
 
     initialize: function() {
-      console.log('init...');
-      // console.log(this.collection);
       // Whenever the collection resets, re-render.
-      // this.listenTo(this.collection, "reset sync request", this.render);
+      this.listenTo(this.collection, "reset sync request", this.render);
     },
 
     events: {

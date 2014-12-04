@@ -8,7 +8,7 @@ PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 # Modify sys.path to include the lib directory
 sys.path.append(os.path.join(PROJECT_ROOT, "lib"))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -197,3 +197,4 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     )
 }
+JQUERY_URL = STATIC_URL + "vendor/bower/jquery/jquery"
