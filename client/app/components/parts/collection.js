@@ -10,7 +10,7 @@ define(function(require, exports, module) {
     // model: bikeModel,
 
     url: function() {
-      return app.api + "bikes";
+      return app.api + "parts";
     },
     parse: function(data) {
       return data.results;
