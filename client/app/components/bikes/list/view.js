@@ -2,6 +2,7 @@ define(function(require, exports, module) {
   "use strict";
 
   var app = require("app");
+  var lightbox = require("lightbox");
   var Item = require("../item/view");
 
   var Layout = Backbone.Layout.extend({
@@ -13,16 +14,12 @@ define(function(require, exports, module) {
 
     beforeRender: function() {
       var self = this;
-      console.log('beforeRender');
-      console.log('this.collection');
-      console.log(this.collection);
-      this.collection.each(function(bike) {
-        bike.get("bikes").forEach(function(b){
-          self.insertView(".bikes-list", new Item({
-            bike: b
+      this.collection.models.forEach(function(obj){
+        self.insertView(".bikes-list", new Item({
+            bike: obj
           }));
-        });
       });
+
     },
 
     afterRender: function() {

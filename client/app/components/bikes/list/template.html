@@ -1,10 +1,72 @@
-<hr>
-<div>
-  <% if (bikes.isRequest) { %>
+<link href="/vendor/bower/lightbox2/css/lightbox.css" rel="stylesheet" />
+
+<% if (bikes.isRequest) { %>
     <img src="/app/img/spinner-gray.gif">
-  <% } else { %>
-    <div class="row bikes-list">
-        <h3>Bikes.</h3>
-    </div>
-  <% } %>
-</div>
+    <% } else { %>
+        <div class="row" style="height:160px;padding:10px;">
+            <h3>Bikes</h3>
+            <div class="col-sm-6 col-sm-offset-1">
+                <div class="col-sm-3">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                            Make
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">
+                            AAA
+                        </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">
+                            BBBB
+                        </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">
+                            CCCCCC
+                        </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">
+                            DDDDDD
+                        </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                            Make
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">
+                            AAA
+                        </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">
+                            BBBB
+                        </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">
+                            CCCCCC
+                        </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">
+                            DDDDDD
+                        </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row bikes-list"></div>
+        <% } %>

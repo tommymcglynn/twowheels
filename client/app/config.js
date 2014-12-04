@@ -15,6 +15,9 @@ require.config({
     // Use the Lo-Dash template loader.
     "ldsh": "../vendor/bower/lodash-template-loader/loader",
 
+    //Lightbox2
+    "lightbox": "../vendor/bower/lightbox2/js/lightbox.min",
+
     // Map remaining vendor dependencies.
     "jquery": "../vendor/bower/jquery/jquery",
     "backbone": "../vendor/bower/backbone/backbone",

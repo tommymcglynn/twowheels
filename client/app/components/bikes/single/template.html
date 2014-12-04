@@ -1,0 +1,36 @@
+<div class="col-sm-8 col-sm-offset-2">
+    <h3><%- bike.get("name") %></h3>
+    <div class="col-sm-3">
+        <img src="<%- bike.get("image_url") %>" />
+        <a target="_BLANK" href="<%- bike.get('source_url') %>">Image source</a>
+    </div>
+
+    <% if (bike.get("models") && bike.get("models").length > 0){ %>
+        <div class="col-sm-3">
+            <h4>Models:</h4>
+            <% bike.get("models").forEach(function(model){ %>
+                <a href="/models/<%- model.id %>"><%- model.name %></a>
+            <% }); %>
+        </div>
+    <% } %>
+
+
+    <% if (bike.get("styles") && bike.get("styles").length > 0){ %>
+        <div class="col-sm-3">
+            <h4>Styles:</h4>
+            <% bike.get("styles").forEach(function(style){ %>
+                <a href="/styles/<%- style.id %>"><%- style.name %></a>
+            <% }); %>
+        </div>
+    <% } %>
+
+    <% if (bike.get("parts") && bike.get("parts").length > 0){ %>
+        <div class="col-sm-3">
+            <h4>Parts:</h4>
+            <% bike.get("parts").forEach(function(part){ %>
+                <a href="/parts/<%- part.id %>"><%- part.name %></a>
+            <% }); %>
+        </div>
+    <% } %>
+
+</div>
