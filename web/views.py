@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
+from django.contrib.auth.decorators import permission_required
 from web.models import BikeStyle, BikeMake, BikeFamily, BikeModel, BikePart, Bike
 
 def index(request):
@@ -8,6 +9,7 @@ def index(request):
     context['api_url'] = request.build_absolute_uri(reverse('api-root'))
     return render(request, 'home.html', context)
 
+@permission_required('web.add_bike', raise_exception=True)
 def gather_images(request, partId=None, makeId=None, familyId=None, modelId=None, styleId=None, start='1'):
     import urllib2
     import json
