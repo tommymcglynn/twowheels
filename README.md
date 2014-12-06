@@ -6,10 +6,11 @@ This project uses vagrant to setup a VM to run in.
     # SSH into VM.
     vagrant ssh
 
-Run database migrations and crete a super user.
+Run database migrations, crete a super user and load development data.
 
     ./manage.py migrate
     ./manage.py createsuperuser
+    ./manage.py loaddata dev_data
 
 Start a test server on port 8000 inside the VM. Port 8111 on your host machine is forwarded to port 8000 on the VM.
 
