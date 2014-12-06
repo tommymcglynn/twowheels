@@ -13,9 +13,7 @@ define(function(require, exports, module) {
       return app.api + "bikes";
     },
     parse: function(data) {
-      console.log('data...');
-      console.log(data.bikes);
-      return data.bikes;
+      return data.results;
     }
   });
 

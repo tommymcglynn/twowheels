@@ -14,8 +14,8 @@ define(function(require, exports, module) {
     },
     parse: function(data) {
       console.log('data...');
-      console.log(data.bikes);
-      return data.bikes;
+      console.log(data.results);
+      return data.results;
     }
   });
 

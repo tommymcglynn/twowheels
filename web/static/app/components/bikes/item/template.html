@@ -1,10 +1,12 @@
+<% console.log('bike11') %>
+<% console.log(bike) %>
 <a href="bikes/<%- bike.id %>">
-<img style="width:100%;" src="<%- bike.image_url %>" />
-    <h4><%= bike.name %></h4>
-    <% if (bike.parts.length > 0) { %>
+<img style="width:100%;" src="<%- bike.get("image_url") %>" />
+    <h4><%= bike.get("name") %></h4>
+    <% if (bike.get("parts").length > 0) { %>
         <ul>
-        <% bike.parts.forEach(function(part){ %>
-            <li><a href="parts/<%- part.id %>"><%- part.name %></li>
+        <% bike.get("parts").forEach(function(part){ %>
+            <li><a href="parts/<%- part.get("id") %>"><%- part.get("name") %></li>
         <% }); %>
         </ul>
     <% } %>

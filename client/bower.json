@@ -1,6 +1,5 @@
 {
   "name": "github-viewer",
-
   "dependencies": {
     "html5-boilerplate": "~4.3.0",
     "almond": "~0.2.6",
@@ -12,6 +11,7 @@
     "layoutmanager": "~0.9.4",
     "mocha": "~1.14.0",
     "chai": "~1.8.1",
-    "bootstrap": "~3.0.3"
+    "bootstrap": "~3.0.3",
+    "lightbox2": "~2.7.1"
   }
 }
