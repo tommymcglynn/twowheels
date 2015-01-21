@@ -10,7 +10,9 @@ admin.autodiscover()
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'bikes', api.BikeViewSet)
 router.register(r'styles', api.BikeStyleViewSet)
-router.register(r'modelIds', api.BikeModelViewSet)
+router.register(r'bikemakes', api.BikeMakeViewSet)
+router.register(r'bikefamilies', api.BikeFamilyViewSet)
+router.register(r'bikemodels', api.BikeModelViewSet)
 router.register(r'parts', api.BikePartViewSet)
 
 urlpatterns = patterns('',
